@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
 
-#DISTID
-#ARCH
-
 
 if [ $# -ne 1 ]; then
   echo "You must specify a repository like <sds-testing>."
@@ -134,7 +131,7 @@ dpkg-buildpackage -S -us -uc -nc -d >/dev/null
 popd >/dev/null
 pkgdsc=$(ls *.dsc)
 echo "### Starting building package"
-sudo DISTID="$OSDISTID" DIST="$OSDISTCODENAME" pbuilder build ${WRK}/*.dsc
+sudo ARCH="$ARCH" DISTID="$OSDISTID" DIST="$OSDISTCODENAME" pbuilder build ${WRK}/*.dsc
 echo "### Building done"
 popd >/dev/null
 echo
